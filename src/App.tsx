@@ -19,7 +19,6 @@ const App: React.FC = () => {
     setTimeout(() => {
       setIsAnimating(false);
     }, 600);
-    console.log(squares);
   };
 
   const handleAddSquare = () => {
