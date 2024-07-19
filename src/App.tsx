@@ -1,10 +1,12 @@
 import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { ISquare, addSquare, removeSquare } from "./store/slices/squareSlice";
-import Square from "./components/Square";
 import { AnimatePresence } from "framer-motion";
+import { useDispatch, useSelector } from "react-redux";
+
+import { addSquare, removeSquare } from "./store/slices/squareSlice";
+import Square from "./components/Square";
 import { RootState, AppDispatch } from "./store/store";
 import Button from "./components/Button";
+import { ISquare } from "./shared/types/types";
 
 const App: React.FC = () => {
   const dispatch: AppDispatch = useDispatch();

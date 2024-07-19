@@ -1,21 +1,8 @@
-// src/slices/squaresSlice.ts
 import { createSlice } from "@reduxjs/toolkit";
+import { getRandomColor } from "../../shared/utils/helpers";
+import { ISquare } from "../../shared/types/types";
 
-export interface ISquare {
-  id: number;
-  color: string;
-}
-
-const getRandomColor = (): string => {
-  const letters = "0123456789ABCDEF";
-  let color = "#";
-  for (let i = 0; i < 6; i++) {
-    color += letters[Math.floor(Math.random() * 16)];
-  }
-  return color;
-};
-
-const squaresSlice = createSlice({
+const squareSlice = createSlice({
   name: "squares",
   initialState: [] as ISquare[],
   reducers: {
@@ -28,5 +15,5 @@ const squaresSlice = createSlice({
   },
 });
 
-export const { addSquare, removeSquare } = squaresSlice.actions;
-export default squaresSlice.reducer;
+export const { addSquare, removeSquare } = squareSlice.actions;
+export default squareSlice.reducer;
