@@ -4,6 +4,7 @@ import { ISquare, addSquare, removeSquare } from "./store/slices/squareSlice";
 import Square from "./components/Square";
 import { AnimatePresence } from "framer-motion";
 import { RootState, AppDispatch } from "./store/store";
+import Button from "./components/Button";
 
 const App: React.FC = () => {
   const dispatch: AppDispatch = useDispatch();
@@ -19,16 +20,27 @@ const App: React.FC = () => {
     console.log(squares);
   };
 
+  const handleAddSquare = () => {
+    setIsAnimating(true);
+    dispatch(addSquare());
+    setTimeout(() => {
+      setIsAnimating(false);
+    }, 600);
+  };
+
   return (
     <div>
       <div className="buttons">
-        <button onClick={() => dispatch(addSquare())}>Добавить</button>
-        <button
-          onClick={handleRemoveSquare}
-          disabled={isAnimating || squares.length === 0}
-        >
-          Удалить
-        </button>
+        <Button
+          text={"Добавить"}
+          handleAddSquare={handleAddSquare}
+          isAnimating={isAnimating}
+        />
+        <Button
+          text={"Удалить"}
+          handleAddSquare={handleRemoveSquare}
+          isAnimating={isAnimating || squares.length === 0}
+        />
       </div>
       <div className="container">
         <AnimatePresence initial={false}>
